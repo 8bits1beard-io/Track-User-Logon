@@ -17,7 +17,7 @@ The directory path where log files will be stored.
 The number of days after which a profile is considered inactive.
 
 .EXAMPLE
-.\UserLogonRegistryStamp_DELETION.ps1
+.\Remove-InactiveUserProfile.ps1
 
 .NOTES
 Author: 8bits1beard
@@ -33,11 +33,11 @@ Source: ../PoSh-Best-Practice/
 param(
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$RegistryPath = 'HKLM:\SOFTWARE\Walmart Applications\WindowsEngineeringOS\TrackUserLogon',
+    [string]$RegistryPath = 'HKLM:\SOFTWARE\TrackUserLogon',
     
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$LogPath = "C:\Windows\Logs\WindowsEngineeringOS",
+    [string]$LogPath = "C:\Windows\Logs",
     
     [Parameter()]
     [ValidateRange(1, 365)]
@@ -65,10 +65,10 @@ function Write-LogMessage {
     The message to be logged.
 
     .PARAMETER LogPath
-    The directory where the log file will be stored. Defaults to C:\Windows\Logs\WindowsEngineeringOS.
+    The directory where the log file will be stored. Defaults to C:\Windows\Logs.
 
     .PARAMETER LogFileName
-    The name of the log file. Defaults to Hide_Recommended_Section_From_StartMenu.log.
+    The name of the log file. Defaults to TrackUserLogon_Deletion.log.
 
     .PARAMETER MaxFileSizeMB
     The maximum size of the log file in megabytes before it is rotated. Defaults to 5 MB.
@@ -95,11 +95,11 @@ function Write-LogMessage {
 
         [Parameter(Position = 2)]
         [ValidateNotNullOrEmpty()]
-        [string]$LogPath = "C:\Windows\Logs\WindowsEngineeringOS",
+        [string]$LogPath = "C:\Windows\Logs",
 
         [Parameter(Position = 3)]
         [ValidateNotNullOrEmpty()]
-        [string]$LogFileName = "Hide_Recommended_Section_From_StartMenu.log",
+        [string]$LogFileName = "TrackUserLogon_Deletion.log",
 
         [Parameter(Position = 4)]
         [int]$MaxFileSizeMB = 5
